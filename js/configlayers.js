@@ -145,8 +145,9 @@ if (config.inset) {
     var insetMap = new mapboxgl.Map({
         container: 'mapInset', // container id
         style: 'mapbox://styles/mapbox/satellite-streets-v12',
-        center: config.chapters[0].location.center,
-        zoom: 3,
+        center: config.chapters[1].location.center,
+        // Hardcode above center value if you want insetMap to be static.
+        zoom: 3, // starting zoom
         hash: false,
         interactive: false,
         attributionControl: false,
@@ -158,7 +159,6 @@ if (config.showMarkers) {
     marker.setLngLat(config.chapters[0].location.center).addTo(map);
 }
 
-// instantiate the scrollama
 var scroller = scrollama();
 
 
@@ -181,11 +181,12 @@ map.on("load", function () {
                 'sky-atmosphere-sun-intensity': 15
             }
         });
-        // Trucks Layer info
+        // truck route info
         map.addSource('trucks', {
             "type": "geojson",
             "data": "data/trucks.geojson"
         })
+
 
         map.addLayer({
             'id': 'trucks',
@@ -227,6 +228,7 @@ map.on("load", function () {
                 'fill-opacity': .2
             }
         });
+          // bike and truck route shared info
         map.addSource('bikeandtrucks', {
             "type": "geojson",
             "data": "data/bikeandtrucks.geojson"
@@ -256,7 +258,6 @@ map.on("load", function () {
                 'paint': {
                     'fill-extrusion-color': '#4169e1',
                 }
-
             })
 
     };
@@ -279,9 +280,6 @@ map.on("load", function () {
             response.element.classList.add('active');
             map[chapter.mapAnimation || 'flyTo'](chapter.location);
 
-            // Incase you do not want to have a dynamic inset map,
-            // rather want to keep it a static view but still change the
-            // bbox as main map move: comment out the below if section.
             if (config.inset) {
                 if (chapter.location.zoom < 5) {
                     insetMap.flyTo({ center: chapter.location.center, zoom: 0 });
@@ -387,11 +385,11 @@ function addInsetLayer(bounds) {
     insetMap.addLayer({
         'id': 'boundsLayer',
         'type': 'fill',
-        'source': 'boundsSource', // reference the data source
+        'source': 'boundsSource', 
         'layout': {},
         'paint': {
-            'fill-color': '#fff', // blue color fill
-            'fill-opacity': .2
+            'fill-color': '#fff', 
+            'fill-opacity': .1
         }
     });
     // // Add a black outline around the polygon.

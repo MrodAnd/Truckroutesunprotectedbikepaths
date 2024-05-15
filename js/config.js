@@ -10,10 +10,10 @@ const config = {
     theme: 'dark',
     use3dTerrain: true, //set true for enabling 3D maps.
     auto: false,
-    title: 'Truck Routes and Biked Marked Streets in NYC',
+    title: 'Truck Routes and Bike Marked Streets',
     subtitle: 'Truck routes can be dangerous places for cyclists. However, truck routes are essential for the city and allow for the movement of goods. Oftentimes, GPS apps direct cyclists to use truck routes that have unprotected bike lanes or "sharrows."',
     byline: 'By Marcos Rodriguez Anderson',
-    footer: '<br> Created using a Mapbox Storytelling template. <a href="https://github.com/MrodAnd/Final-Project" target="_blank"> Sources </a>',
+    footer: '<br><a href="https://github.com/MrodAnd/Final-Project" target="_blank"> Sources </a>',
 
     //chapters information
 //chapter 1
@@ -151,7 +151,7 @@ const config = {
             hidden: false,
             title: 'What Can We Do?',
             image: 'images/morebikelanes.jpg',
-            description: '<b>The government should upgrade sharrows with improved bike infrastructure. <div></div> GPS apps should classify truck routes with unprotected bike lanes as a separate road category. GPS apps then could program cyclist trips to avoid truck routes that do not have protected bike infrastructure.</b>',
+            description: '<b>The government should upgrade sharrows with improved cyclist infrastructure. <div></div> GPS apps should classify truck routes with unprotected bike lanes as a separate road category. GPS apps then could program cyclist trips to avoid truck routes that do not have protected bike infrastructure.</b>',
             location: {
                 center: [-73.91737, 40.71908],
                 zoom: 11.5,
